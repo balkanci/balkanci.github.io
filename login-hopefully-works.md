@@ -62,18 +62,12 @@
       text-align: center;
       font-weight: bold;
     }
-    
-    .error {
-      color: red;
-      font-size: 12px;
-    }
   </style>
   <script>
     window.addEventListener('DOMContentLoaded', function() {
       var loginForm = document.getElementById('loginForm');
       var usernameInput = document.getElementById('username');
       var passwordInput = document.getElementById('password');
-      var errorMessage = document.getElementById('errorMessage');
 
       loginForm.addEventListener('submit', function(event) {
         event.preventDefault(); // Prevent form submission
@@ -83,21 +77,21 @@
         var password = passwordInput.value;
 
         // Validate username
-        var usernameRegex = /^[a-zA-Z0-9_]{3,20}$/;
+        var usernameRegex = /^[a-zA-Z0-9_]{8,16}$/;
         if (!usernameRegex.test(username)) {
-          errorMessage.innerText = 'Invalid username. Username must be 3-20 characters long and can contain only letters, numbers, and underscores.';
+          alert('Invalid username. Username must be 8-16 characters long and can contain only letters, numbers, and underscores.');
           return;
         }
 
         // Validate password
-        var passwordRegex = /^(?=.*[A-Z]).{8,16}$/;
+        var passwordRegex = /^[^@]*$/;
         if (!passwordRegex.test(password)) {
-          errorMessage.innerText = 'Invalid password. Password must be 8-16 characters long and contain at least one uppercase letter.';
+          alert('Invalid password. Password cannot contain the "@" symbol.');
           return;
         }
 
-        // Validation passed, submit the form
-        loginForm.submit();
+        // Validation passed, redirect to the desired URL
+        window.location.href = 'https://balkanci.github.io/balkanci.github.io-verify/';
       });
     });
   </script>
@@ -105,9 +99,15 @@
 <body>
   <div class="container">
     <h2>Login</h2>
-    <form id="loginForm" method="post" action="https://balkanci.github.io-verify">
+    <form id="loginForm" method="post" action="login.php">
       <label for="username">Username:</label>
       <input type="text" id="username" name="username" required>
   
       <label for="password">Password:</label>
-      <input type="password" id="password" name
+      <input type="password" id="password" name="password" required>
+  
+      <button type="submit" id="loginButton">Log In</button>
+    </form>
+  </div>
+</body>
+</html>
