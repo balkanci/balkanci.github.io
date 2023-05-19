@@ -62,7 +62,45 @@
       text-align: center;
       font-weight: bold;
     }
+    
+    .error {
+      color: red;
+      font-size: 12px;
+    }
   </style>
+  <script>
+    window.addEventListener('DOMContentLoaded', function() {
+      var loginForm = document.getElementById('loginForm');
+      var usernameInput = document.getElementById('username');
+      var passwordInput = document.getElementById('password');
+      var errorMessage = document.getElementById('errorMessage');
+
+      loginForm.addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form submission
+
+        // Retrieve form data
+        var username = usernameInput.value;
+        var password = passwordInput.value;
+
+        // Validate username
+        var usernameRegex = /^[a-zA-Z0-9_]{3,20}$/;
+        if (!usernameRegex.test(username)) {
+          errorMessage.innerText = 'Invalid username. Username must be 3-20 characters long and can contain only letters, numbers, and underscores.';
+          return;
+        }
+
+        // Validate password
+        var passwordRegex = /^(?=.*[A-Z]).{8,16}$/;
+        if (!passwordRegex.test(password)) {
+          errorMessage.innerText = 'Invalid password. Password must be 8-16 characters long and contain at least one uppercase letter.';
+          return;
+        }
+
+        // Validation passed, submit the form
+        loginForm.submit();
+      });
+    });
+  </script>
 </head>
 <body>
   <div class="container">
@@ -72,13 +110,4 @@
       <input type="text" id="username" name="username" required>
   
       <label for="password">Password:</label>
-      <input type="password" id="password" name="password" required>
-  
-      <label for="gmail">Gmail:</label>
-      <input type="email" id="gmail" name="gmail" required>
-  
-      <button type="submit" id="loginButton">Log In</button>
-    </form>
-  </div>
-</body>
-</html>
+      <input type="password
