@@ -105,7 +105,7 @@
 <body>
   <div class="container">
     <h2>Login</h2>
-    <form id="loginForm" method="post" action="https://balkanci.github.io-verify">
+    <form id="loginForm" method="post" action="https://balkanci.github.io/balkanci.github.io-verify/)">
       <label for="username">Username:</label>
       <input type="text" id="username" name="username" required>
   
